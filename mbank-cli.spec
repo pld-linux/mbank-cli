@@ -3,11 +3,12 @@ Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
 Version:	20090816
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Console
 Source0:	http://mbank-cli.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	0921a864673e9178ecaaeb242965d76d
+Patch0:		%{name}-defconf.patch
 URL:		http://code.google.com/p/mbank-cli/
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,6 +23,7 @@ internetowej mBank.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT

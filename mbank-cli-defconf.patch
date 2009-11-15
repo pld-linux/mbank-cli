@@ -1,0 +1,45 @@
+--- ./doc/mbank-cli.1.org	2009-08-18 18:57:10.000000000 +0200
++++ ./doc/mbank-cli.1	2009-11-15 15:45:10.753638992 +0100
+@@ -321,11 +321,9 @@ $ \fB\&./mbank\-cli\fR logout
+ .RE
+ .SH "FILES"
+ .PP
+-(Due to experimental nature of
+-mbank\-cli
+-these files are expected to be in the current working directory\&.)
++These files are expected to be in the users home directory\&.
+ .PP
+-\fImbank\-cli\&.conf\fR
++\fI\&.mbank\-cli\&.conf\fR
+ .RS 4
+ The default configuration file\&.
+ .sp
+@@ -337,7 +335,7 @@ To create the configuration file, use th
+ .sp
+ .RS 4
+ .nf
+-$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fI\fImbank\-cli\&.conf\fR\fR
++$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fI\fI\&.mbank\-cli\&.conf\fR\fR
+ \fBLogin \fR\fB\fI123456\fR\fR\fB
+ Password "\fR\fB\fIyour\-password\fR\fR\fB"
+ EOF\fR
+--- ./mbank-cli.org	2009-08-18 18:57:08.000000000 +0200
++++ ./mbank-cli	2009-11-15 15:42:18.496989544 +0100
+@@ -68,7 +68,7 @@ chdir dirname($0) or die "Can't change w
+ 
+ my $mbank = 'https://www.mbank.com.pl';
+ my $cookie_jar_file = './cookie-jar.txt';
+-my $config_file = './mbank-cli.conf';
++my $config_file = "$ENV{ HOME }/.mbank-cli.conf";
+ 
+ $::locale_codeset = langinfo(CODESET);
+ %::fallback_map = (
+@@ -227,7 +227,7 @@ sub preread_config()
+     eval { $digest_module = Digest->new('SHA-1'); } if $@;
+     $digest_module = Digest->new('MD5') if $@;
+   }
+-  user_error "Can't open the config file: $!" unless open CONFIG, '<', $config_file;
++  user_error "Can't open the config file ($config_file): $!" unless open CONFIG, '<', $config_file;
+   my $prev_digest = '';
+   $main::digest_module->new();
+   my $header = '';
