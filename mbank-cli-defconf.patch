@@ -28,8 +28,9 @@
 @@ -68,7 +68,7 @@ chdir dirname($0) or die "Can't change w
  
  my $mbank = 'https://www.mbank.com.pl';
- my $cookie_jar_file = './cookie-jar.txt';
+-my $cookie_jar_file = './cookie-jar.txt';
 -my $config_file = './mbank-cli.conf';
++my $cookie_jar_file = "$ENV{ HOME }/.mbank-cli_cookie-jar.txt";
 +my $config_file = "$ENV{ HOME }/.mbank-cli.conf";
  
  $::locale_codeset = langinfo(CODESET);
