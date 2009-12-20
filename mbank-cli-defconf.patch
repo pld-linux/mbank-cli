@@ -1,7 +1,7 @@
 --- ./doc/mbank-cli.1.org	2009-08-18 18:57:10.000000000 +0200
 +++ ./doc/mbank-cli.1	2009-11-15 15:45:10.753638992 +0100
 @@ -321,11 +321,9 @@ $ \fB\&./mbank\-cli\fR logout
- .RE
+ .\}
  .SH "FILES"
  .PP
 -(Due to experimental nature of
@@ -9,16 +9,16 @@
 -these files are expected to be in the current working directory\&.)
 +These files are expected to be in the users home directory\&.
  .PP
--\fImbank\-cli\&.conf\fR
+-mbank\-cli\&.conf
 +\fI\&.mbank\-cli\&.conf\fR
  .RS 4
  The default configuration file\&.
  .sp
 @@ -337,7 +335,7 @@ To create the configuration file, use th
- .sp
  .RS 4
+ .\}
  .nf
--$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fI\fImbank\-cli\&.conf\fR\fR
+-$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fImbank\-cli\&.conf\fR
 +$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fI\fI\&.mbank\-cli\&.conf\fR\fR
  \fBLogin \fR\fB\fI123456\fR\fR\fB
  Password "\fR\fB\fIyour\-password\fR\fR\fB"
@@ -27,7 +27,8 @@
 +++ ./mbank-cli	2009-11-15 15:42:18.496989544 +0100
 @@ -68,7 +68,7 @@ chdir dirname($0) or die "Can't change w
  
- my $mbank = 'https://www.mbank.com.pl';
+ my $mbank_host = 'www.mbank.com.pl';
+ my $mbank = "https://$mbank_host";
 -my $cookie_jar_file = './cookie-jar.txt';
 -my $config_file = './mbank-cli.conf';
 +my $cookie_jar_file = "$ENV{ HOME }/.mbank-cli_cookie-jar.txt";
