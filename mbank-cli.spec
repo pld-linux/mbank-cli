@@ -10,6 +10,8 @@ Source0:	http://mbank-cli.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	ea0a82f3285f659d6e57d57f113d4d32
 Patch0:		%{name}-defconf.patch
 URL:		http://code.google.com/p/mbank-cli/
+BuildRequires:	perl-base
+BuildRequires:	rpm-perlprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
