@@ -25,7 +25,7 @@
  EOF\fR
 --- ./mbank-cli.org	2009-08-18 18:57:08.000000000 +0200
 +++ ./mbank-cli	2009-11-15 15:42:18.496989544 +0100
-@@ -68,7 +68,7 @@ chdir dirname($0) or die "Can't change w
+@@ -68,8 +68,8 @@ chdir dirname($0) or die "Can't change w
  
  my $mbank_host = 'www.mbank.com.pl';
  my $mbank = "https://$mbank_host";
