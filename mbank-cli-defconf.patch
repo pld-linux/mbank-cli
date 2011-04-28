@@ -1,31 +1,7 @@
---- ./doc/mbank-cli.1.org	2009-08-18 18:57:10.000000000 +0200
-+++ ./doc/mbank-cli.1	2009-11-15 15:45:10.753638992 +0100
-@@ -321,11 +321,9 @@ $ \fB\&./mbank\-cli\fR logout
- .\}
- .SH "FILES"
- .PP
--(Due to experimental nature of
--mbank\-cli
--these files are expected to be in the current working directory\&.)
-+These files are expected to be in the users home directory\&.
- .PP
--mbank\-cli\&.conf
-+\fI\&.mbank\-cli\&.conf\fR
- .RS 4
- The default configuration file\&.
- .sp
-@@ -337,7 +335,7 @@ To create the configuration file, use th
- .RS 4
- .\}
- .nf
--$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fImbank\-cli\&.conf\fR
-+$ \fBcat\fR <<EOF | \fBgpg\fR \-\-armor \-\-encrypt \-\-default\-recipient\-self > \fI\fI\&.mbank\-cli\&.conf\fR\fR
- \fBLogin \fR\fB\fI123456\fR\fR\fB
- Password "\fR\fB\fIyour\-password\fR\fR\fB"
- EOF\fR
---- ./mbank-cli.org	2009-08-18 18:57:08.000000000 +0200
-+++ ./mbank-cli	2009-11-15 15:42:18.496989544 +0100
-@@ -68,8 +68,8 @@ chdir dirname($0) or die "Can't change w
+diff -ur mbank-cli-20110412-orig/mbank-cli mbank-cli-20110412/mbank-cli
+--- mbank-cli-20110412-orig/mbank-cli	2011-04-12 18:00:41.000000000 +0200
++++ mbank-cli-20110412/mbank-cli	2011-04-28 15:32:45.656304528 +0200
+@@ -68,8 +68,8 @@
  
  my $mbank_host = 'www.mbank.com.pl';
  my $mbank = "https://$mbank_host";
@@ -36,7 +12,7 @@
  
  $::locale_codeset = langinfo(CODESET);
  %::fallback_map = (
-@@ -227,7 +227,7 @@ sub preread_config()
+@@ -225,7 +225,7 @@
      eval { $digest_module = Digest->new('SHA-1'); } if $@;
      $digest_module = Digest->new('MD5') if $@;
    }
