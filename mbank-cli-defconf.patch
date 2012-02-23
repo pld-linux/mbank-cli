@@ -1,18 +1,18 @@
-diff -ur mbank-cli-20110412-orig/mbank-cli mbank-cli-20110412/mbank-cli
---- mbank-cli-20110412-orig/mbank-cli	2011-04-12 18:00:41.000000000 +0200
-+++ mbank-cli-20110412/mbank-cli	2011-04-28 15:32:45.656304528 +0200
-@@ -68,8 +68,8 @@
+diff -uNr mbank-cli-20120215/mbank-cli mbank-cli-20120215.new/mbank-cli
+--- mbank-cli-20120215/mbank-cli	2012-02-15 22:48:39.000000000 +0100
++++ mbank-cli-20120215.new/mbank-cli	2012-02-23 14:36:01.943098229 +0100
+@@ -70,8 +70,8 @@
  
- my $mbank_host = 'www.mbank.com.pl';
- my $mbank = "https://$mbank_host";
+ my $mbank_host = undef; # use set_country() to define
+ my $mbank = undef; # use set_country() to define
 -my $cookie_jar_file = './cookie-jar.txt';
 -my $config_file = './mbank-cli.conf';
 +my $cookie_jar_file = "$ENV{ HOME }/.mbank-cli_cookie-jar.txt";
 +my $config_file = "$ENV{ HOME }/.mbank-cli.conf";
  
- $::locale_codeset = langinfo(CODESET);
- %::fallback_map = (
-@@ -225,7 +225,7 @@
+ sub set_country($)
+ {
+@@ -302,7 +302,7 @@
      eval { $digest_module = Digest->new('SHA-1'); } if $@;
      $digest_module = Digest->new('MD5') if $@;
    }
