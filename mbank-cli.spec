@@ -2,16 +2,16 @@
 Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
-Version:	20120617
+Version:	20131014
 Release:	1
 License:	GPL v2
 Group:		Applications/Console
 Source0:	http://mbank-cli.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	cb8b62359c8a742adb0d4c8807a4c54d
+# Source0-md5:	5bbd4a52acdbae712e98824cadfd33fa
 Patch0:		%{name}-defconf.patch
 Patch1:		%{name}-ca.patch
 URL:		http://code.google.com/p/mbank-cli/
-BuildRequires:	perl-base
+BuildRequires:	perl-base >= 5.10
 BuildRequires:	rpm-perlprov
 Requires:	ca-certificates
 Requires:	perl(LWP::Protocol::https)
