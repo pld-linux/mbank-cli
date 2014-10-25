@@ -1,19 +1,41 @@
-diff -uNr mbank-cli-20120215/mbank-cli mbank-cli-20120215.new/mbank-cli
---- mbank-cli-20120215/mbank-cli	2012-02-15 22:48:39.000000000 +0100
-+++ mbank-cli-20120215.new/mbank-cli	2012-02-23 14:40:56.453431641 +0100
-@@ -189,12 +189,12 @@
+diff -urN mbank-cli-1.2.2.orig/mbank-cli mbank-cli-1.2.2/mbank-cli
+--- mbank-cli-1.2.2.orig/mbank-cli	2014-10-25 12:19:48.139241025 +0200
++++ mbank-cli-1.2.2/mbank-cli	2014-10-25 12:20:41.925905849 +0200
+@@ -547,36 +547,7 @@
  
- sub lwp_init()
+ sub get_default_ca_path
  {
--  my $ca_dir = $ENV{HTTPS_CA_DIR};
--  $ca_dir //= '/etc/ssl/certs/';
-+  my $ca_file = $ENV{HTTPS_CA_FILE};
-+  $ca_file //= '/etc/certs/ca-certificates.crt';
-   map { delete $ENV{$_}; } grep(/^HTTPS_/, keys %ENV);
-   $ENV{'HTTPS_VERSION'} = 3;
-   $ENV{'HTTPS_DEBUG'} = 0;
--  $ENV{'HTTPS_CA_DIR'} = $ca_dir;
-+  $ENV{'HTTPS_CA_FILE'} = $ca_file;
-   umask(umask() | 077);
-   my $ua = new LWP::UserAgent(
-     agent => 'Mozilla/5.0',
+-    my ($name, @hashes) = @_;
+-    my $filename = "$name.crt";
+-    $filename =~ y/ /_/;
+-    my $path = "/usr/share/ca-certificates/mozilla/$filename";
+-    if (-r $path) {
+-        return $path;
+-    }
+-    my $ssl_cert_dir = $ENV{SSL_CERT_DIR};
+-    if (not defined($ssl_cert_dir) and $Net::SSLeay::VERSION >= 1.43) {
+-        # https://www.openssl.org/docs/crypto/SSLeay_version.html
+-        # SSLEAY_DIR == 5
+-        my $openssl_info = Net::SSLeay::SSLeay_version(5);
+-        my ($openssl_dir) = $openssl_info =~ m/\AOPENSSLDIR: "(.*)"\Z/;
+-        if (defined($openssl_dir)) {
+-            $ssl_cert_dir = "$openssl_dir/certs";
+-        }
+-    }
+-    if (defined($ssl_cert_dir)) {
+-        for my $hash (@hashes) {
+-            $path = "$ssl_cert_dir/$hash.0";
+-            # TODO: actually check if this is the certificate we want
+-            # hash collisions are unlikely, but not impossible
+-            -r $path or next;
+-            my $rpath = readlink($path) or next;
+-            $rpath =~ m{\A/}
+-                or $rpath = "$ssl_cert_dir/$rpath";
+-            return $rpath;
+-        }
+-    }
+-    return "$FindBin::Bin/ca.crt";
++    return '/etc/certs/ca-certificates.crt';
+ }
+ 
+ # ===========================
