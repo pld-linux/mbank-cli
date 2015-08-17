@@ -5,7 +5,7 @@ Name:		mbank-cli
 Version:	1.4.1
 Release:	1
 Epoch:		1
-License:	GPL v2
+License:	MIT
 Group:		Applications/Console
 Source0:	https://bitbucket.org/jwilk/mbank-cli/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	f2e9454df931105dc82be52160f155ed
