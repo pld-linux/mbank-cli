@@ -1,4 +1,4 @@
-%include        /usr/lib/rpm/macros.perl
+%include		/usr/lib/rpm/macros.perl
 Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
@@ -10,13 +10,13 @@ Group:		Applications/Console
 Source0:	https://bitbucket.org/jwilk/mbank-cli/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	f2e9454df931105dc82be52160f155ed
 Patch0:		%{name}-ca.patch
-URL:		http://code.google.com/p/mbank-cli/
+URL:		http://jwilk.net/software/mbank-cli
 BuildRequires:	perl-base >= 5.10
 BuildRequires:	rpm-perlprov
 Requires:	ca-certificates
-Requires:	perl(LWP::Protocol::https)
-Requires:	perl(Net::SSL)
 Requires:	perl(Term::ReadLine::Gnu)
+Requires:	perl-Crypt-SSLeay
+Requires:	perl-LWP-Protocol-https
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,7 +34,6 @@ internetowej mBank.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -D mbank-cli $RPM_BUILD_ROOT%{_bindir}/mbank-cli
 install -D doc/mbank-cli.1 $RPM_BUILD_ROOT%{_mandir}/man1/mbank-cli.1
 
@@ -44,5 +43,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/mbank-cli
 %{_mandir}/man1/mbank-cli.1*
