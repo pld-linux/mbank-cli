@@ -15,8 +15,18 @@ BuildRequires:	perl-base >= 5.10
 BuildRequires:	rpm-perlprov
 Requires:	ca-certificates
 Requires:	perl(Term::ReadLine::Gnu)
-Requires:	perl-Crypt-SSLeay
+Requires:	perl-HTML-Form
+Requires:	perl-HTML-Parser
+Requires:	perl-HTML-Tree
+Requires:	perl-HTTP-Cookies
+Requires:	perl-HTTP-Message
+Requires:	perl-IO-Socket-SSL
+Requires:	perl-IPC-Run
 Requires:	perl-LWP-Protocol-https
+Requires:	perl-Net-HTTP
+Requires:	perl-Net-SSLeay
+Requires:	perl-TimeDate
+Requires:	perl-libwww
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
