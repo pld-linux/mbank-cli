@@ -1,7 +1,7 @@
-diff -urN mbank-cli-1.2.2.orig/mbank-cli mbank-cli-1.2.2/mbank-cli
---- mbank-cli-1.2.2.orig/mbank-cli	2014-10-25 12:19:48.139241025 +0200
-+++ mbank-cli-1.2.2/mbank-cli	2014-10-25 12:20:41.925905849 +0200
-@@ -547,36 +547,7 @@
+diff -urN mbank-cli-1.6.2.orig/mbank-cli mbank-cli-1.6.2/mbank-cli
+--- mbank-cli-1.6.2.orig/mbank-cli	2017-02-06 23:53:16.304962637 +0100
++++ mbank-cli-1.6.2/mbank-cli	2017-02-06 23:53:42.481628527 +0100
+@@ -556,36 +556,7 @@
  
  sub get_default_ca_path
  {
@@ -14,7 +14,7 @@ diff -urN mbank-cli-1.2.2.orig/mbank-cli mbank-cli-1.2.2/mbank-cli
 -    }
 -    my $ssl_cert_dir = $ENV{SSL_CERT_DIR};
 -    if (not defined($ssl_cert_dir) and $Net::SSLeay::VERSION >= 1.43) {
--        # https://www.openssl.org/docs/crypto/SSLeay_version.html
+-        # https://www.openssl.org/docs/man1.0.2/crypto/SSLeay_version.html
 -        # SSLEAY_DIR == 5
 -        my $openssl_info = Net::SSLeay::SSLeay_version(5);
 -        my ($openssl_dir) = $openssl_info =~ m/\AOPENSSLDIR: "(.*)"\Z/;

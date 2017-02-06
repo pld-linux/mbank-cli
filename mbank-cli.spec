@@ -2,13 +2,13 @@
 Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
-Version:	1.6
+Version:	1.6.2
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Applications/Console
-Source0:	https://bitbucket.org/jwilk/mbank-cli/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	7ce7f351f7fadd0b4d45f3d44d4ebc6b
+Source0:	https://github.com/jwilk/mbank-cli/releases/download/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	a8a8409b579a9dc9239d5fe934b14284
 Patch0:		%{name}-ca.patch
 URL:		http://jwilk.net/software/mbank-cli
 BuildRequires:	perl-base >= 5.10
