@@ -2,19 +2,19 @@
 Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
-Version:	1.6.3
+Version:	1.6.4
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Applications/Console
-Source0:	https://github.com/jwilk/mbank-cli/releases/download/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	bc87b9cbcb720e8d93763e9f9c1e8789
+Source0:	https://github.com/jwilk/mbank-cli/archive/%{version}.tar.gz?/%{name}-%{version}.tar.gz
+# Source0-md5:	98793def9c18ef70ea1a42284f46192b
 Patch0:		%{name}-ca.patch
 URL:		http://jwilk.net/software/mbank-cli
 BuildRequires:	perl-base >= 5.10
+BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
 Requires:	ca-certificates
-Requires:	perl(Term::ReadLine::Gnu)
 Requires:	perl-HTML-Form
 Requires:	perl-HTML-Parser
 Requires:	perl-HTML-Tree
@@ -25,6 +25,7 @@ Requires:	perl-IPC-Run
 Requires:	perl-LWP-Protocol-https
 Requires:	perl-Net-HTTP
 Requires:	perl-Net-SSLeay
+Requires:	perl-Term-ReadLine-Gnu
 Requires:	perl-TimeDate
 Requires:	perl-libwww
 BuildArch:	noarch
@@ -41,6 +42,10 @@ internetowej mBank.
 %prep
 %setup -q
 %patch0 -p1
+
+%build
+cd doc
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
