@@ -44,8 +44,7 @@ internetowej mBank.
 %patch0 -p1
 
 %build
-cd doc
-%{__make}
+%{__make} -C doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
