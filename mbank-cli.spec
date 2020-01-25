@@ -1,4 +1,3 @@
-%include		/usr/lib/rpm/macros.perl
 Summary:	A command line interface to mBank
 Summary(pl.UTF-8):	Interfejs CLI do mBanku
 Name:		mbank-cli
