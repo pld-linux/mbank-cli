@@ -10,23 +10,20 @@ Source0:	https://github.com/jwilk/mbank-cli/archive/%{version}.tar.gz?/%{name}-%
 # Source0-md5:	73e61a235d67ff0b8c891171dc4a03bc
 Patch0:		%{name}-ca.patch
 URL:		http://jwilk.net/software/mbank-cli
-BuildRequires:	perl-base >= 5.10
+BuildRequires:	perl-base >= 1:5.14
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
 Requires:	ca-certificates
+Requires:	perl-base >= 1:5.14
 Requires:	perl-HTML-Form
-Requires:	perl-HTML-Parser
 Requires:	perl-HTML-Tree
-Requires:	perl-HTTP-Cookies
-Requires:	perl-HTTP-Message
-Requires:	perl-IO-Socket-SSL
+Requires:	perl-IO-Socket-SSL >= 1:1.31
 Requires:	perl-IPC-Run
 Requires:	perl-LWP-Protocol-https
 Requires:	perl-Net-HTTP
 Requires:	perl-Net-SSLeay
 Requires:	perl-Term-ReadLine-Gnu
-Requires:	perl-TimeDate
-Requires:	perl-libwww
+Requires:	perl-libwww >= 5.802
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
