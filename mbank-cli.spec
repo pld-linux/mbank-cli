@@ -54,6 +54,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/README
+%doc LICENSE doc/README
 %attr(755,root,root) %{_bindir}/mbank-cli
 %{_mandir}/man1/mbank-cli.1*
